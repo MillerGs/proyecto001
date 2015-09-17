@@ -1,0 +1,38 @@
+<div class="jumbotron">
+    <h1>Mostrando datos desde TableWatwey</h1>
+</div>
+
+<table style="width: 100%; text-align: left">
+    <tr>
+        <th>idAmbiente</th>
+        <th># Dormitorio</th>
+        <th># Ba&ntilde;0</th>
+        <th>&Aacute;rea Total</th>
+        <th>Amoblado</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php
+    if(isset($this->datos))
+    {
+        foreach ($this->datos as $rowAmb) :
+    ?>
+    <tr style="background-color: <?php echo $this->cycle(array("#F0F0F0","#FFFFFF"))->next()?>">
+        <td><?php echo $rowAmb['idAmbiente']?></td>
+        <td><?php echo $rowAmb['AmbDormitorio']?></td>
+        <td><?php echo $rowAmb['AmbBanio']?></td>
+        <td><?php echo $rowAmb['AmbAreaTotal']?></td>
+        <td>
+            <?php 
+            if ($rowAmb['AmbAmoblado'] ==1) echo 'Si';
+            if ($rowAmb['AmbAmoblado'] ==0) echo 'No';
+            ?>
+        </td>
+        <td>
+            <a href="<?php echo $this->basePath()?>/portal/index/detalle/<?php echo $rowAmb['idAmbiente']?>">detalle</a>
+        </td>
+    </tr>
+    <?php
+        endforeach;
+    }
+    ?>
+</table>
