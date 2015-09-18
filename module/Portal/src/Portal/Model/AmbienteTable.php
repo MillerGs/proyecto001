@@ -17,7 +17,7 @@
  */
 namespace Portal\Model;
 
-use Application\Model\Entity;
+//use Application\Model\Entity;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\Adapter;

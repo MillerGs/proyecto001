@@ -9,16 +9,19 @@
 
 namespace Portal\Controller;
 
+//use Application\Model\Entity;
+
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 use Zend\Db\Adapter\Adapter;
+
 use Portal\Model\AmbienteTable;
+use Portal\Model\ImagenesTable;
 
 class IndexController extends AbstractActionController
 {
-    public $sbAdapter;
-    
+    public $dbAdapter;
     public function indexAction()
     {
         $this->dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
@@ -35,6 +38,16 @@ class IndexController extends AbstractActionController
         $idAmbiente = (int) $this->params()->fromRoute('idAmbiente',0);
         $valores = array(
             'datos' => $ambientes->getDetallePorId($idAmbiente),
+        );
+        return new ViewModel($valores);
+    }
+    public function imagenPorAmbienteAction()
+    {
+        $this->dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+        $imagenes = new ImagenesTable($this->dbAdapter);
+        $idAmbiente = (int) $this->params()->fromRoute('idAmbiente',0);
+        $valores = array(
+            'imagenes' => $imagenes->getImagenPorAmbiente($idAmbiente),
         );
         return new ViewModel($valores);
     }
