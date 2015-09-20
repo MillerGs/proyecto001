@@ -1,0 +1,199 @@
+comando para paquetes rotos o 
+----------------------------------------
+sudo apt-get autoremove
+sudo apt-get autoclean
+sudo apt-get update
+sudo apt-get -f install
+Los primeros comandos hacen que el sistema limpie la memoria de paquetes e instalación, tanto efectivas como y limpia el sistema de paquetes huérfanos, es decir, de paquetes que en un tiempo tuvieron uso por alguna aplicación y ahora ya no lo usa ningún programa. El tercer comando actualiza el sistema Apt. Y el último comando resuelve las dependencias rotas que existan en el sistema.
+
+Instalacion de PHP Codesniffer
+-----------------------------------------
+sudo apt-get install php-codesniffer
+- verificar estandares	: phpcs -i
+- resumen		: phpcs --standard=Zend --report=sumary *.php
+
+Ingresar a GitLab
+------------------------------------------
+ssh-keygen >> optener
+		Generating public/private rsa key pair.
+		Enter file in which to save the key (/home/millergs/.ssh/id_rsa): 
+		Created directory '/home/millergs/.ssh'.
+		Enter passphrase (empty for no passphrase): 
+		Enter same passphrase again: 
+		Your identification has been saved in /home/millergs/.ssh/id_rsa.
+		Your public key has been saved in /home/millergs/.ssh/id_rsa.pub. 
+/home/millergs/.ssh 	>> ir a esta ruta
+cat id_rsa.pub 		>> optener clave publica
+git config --global user.name "Miller Gomez"
+git config --global user.email "miller.gomez@clicksandbricks.pe"
+
+gedit index.php		>> editar comando
+git add index.php 	>> agregar para commit
+git commit -m "plus index." >> nombrar commit
+git push origin devel	>> subir commit a la ramma 'devel'
+
+** para clonar proyecto
+git clone git@github.com:martincruzot/git-nivel-dios.git
+** para crear una rama
+git branch master_millergs
+** para cambiar de ubicacion de rama
+git checkout master_millergs 
+
+COMANDOS SOBRE GITHUN (http://rogerdudler.github.io/git-guide/index.es.html)
+------------------------------------------
+git checkout -b nueva_rama		|| creacion de una nueva rama
+
+
+
+Solución al error de dependencias
+-------------------------------------------
+sudo apt-get autoremove
+sudo apt-get autoclean
+sudo apt-get update
+sudo apt-get -f install
+
+Los primeros comandos hacen que el sistema limpie la memoria de paquetes e instalación, tanto efectivas como y limpia el sistema de paquetes huérfanos, es decir, de paquetes que en un tiempo tuvieron uso por alguna aplicación y ahora ya no lo usa ningún programa. El tercer comando actualiza el sistema Apt. Y el último comando resuelve las dependencias rotas que existan en el sistema.
+
+
+
+
+
+
+Comandos de Git (sagir90@hotmail.com joptionpane14)
+---------------
+hay 3 entornos de configuración dels sistema,global y de proyecto, las de proyecto no se coloca ni --global ni --system
+
+    OBTENER CLAVE PUBLICA & PRIVADA
+    -------------------------------
+    ssh-keygen  // Para obtener las claves
+    cat ~/.ssh/id_rsa.pub   // para ver la clave
+
+    CONFIGURACIÓN DE GIT
+    --------------------    
+    git --version //Para ver los comandos de git
+    git config --global user.name "TU NOMBRE" // Para poner al usuario
+    git config --global user.name // para mostrar el usuario
+    git config --global user.email "email" // Para poner el email
+    git config --global user.email // para mostrar el email
+    git config --global color.ui true // para poner interfaz de colores en git
+    git config --global --list //te muestra la lista de configuraciones
+    git config --global alias.nombreDeTuAlias 'comando que ejecutara' //renombra los comandos entre comillas
+    git help // te da un tutorial de como se usan los comandos en git
+    git help push // te da un tutorial del comando escrito para salir presina la tecla q
+    -------------------- 
+
+    COMANDOS DE TRABAJO DE GIT
+    -------------------------
+    git init // me activa git dentro del proyecto, este crea el .git    
+    git add -A // guarda todos los archivos y los empieza a rastrear, es decir los sube al stading area
+    git commit -m "mensae de commit" // sube lo del stading area al repositorio
+    git add nombreDelArchivo // sube un archivo al standing area    
+    git checkout nombreDelCommit // me regresa al commit indicado
+    git checkout master // me lleva al ultimo commit del proyecto    
+    git commit -am "mensaje de commit" // es un atajo hace git add y git comimit al mismo tiempo
+    git branch nombreDeLaRama // crea una rama
+    git checkout nombreDeLaRama // te mueve al último commit de la rama. 
+    
+    -------------------------
+
+    COMANDOS DE ELIMINACION GIT
+    ---------------------------
+    git reset --soft nombreDelCommit //borra el commit indicado del repositorio,pero te deja el stading area y working area
+    git reset --mix nombreDelCommit // parecido al soft solo que te borra lo del stading area
+    git reset --hard nombreDelCommit // te borra todo repository, stading area, working areay si lo vuelves a poner lo devuelve
+    git branch -d nombreDeLaRama // elimina la rama
+    ---------------------------
+    COMANDOS DE COLABORACION Y NO COLABORACION
+    -------------------------------------------
+    git clone nombreDeLaUrl // hace una copia de hithub a tu comupu
+
+    COMANDOS DE CONSULTAS GIT
+    -------------------------
+    git status // me muestra el estado del proyecto cambios que se han echo, que archivos estan en el working area, en el stading area y cuales en el repositorio
+    git log // te dice como esta el repositorio a nivel de commits  
+    git log > commits.txt // me crea un txt con todos los commits realizados
+    git branch // te muestra las ramas que existen. El * te indica en que rama estas actualmente
+    git log --oneline --graph --all // te dibuja como van las rammas
+    git branch --merge // te lista las ramas que se han fusionado
+    git branch -a // me muestra todas las ramas hasta la escondida como por ejemploorigin/master
+    git -remote -v // para ver con quien estamos vinvulados remotamente
+    -------------------------
+
+    FUSIÓN DE RAMAS
+    ---------------
+    Primero situarse en la rama seria, es decir la que absorvera al otro por ejemplo la master:
+    * git checkout master
+    Luego unirla con la rama que quieres
+    * git merge nombreDeLaRamaAUnir //une a la rama indicada con la rema en donde esta tu checkout
+    Aqui puede pasar 2 cosas 
+    1) Fast Foward : Todo bonito, no te preguntara nada ya que se uniran archivos modificados distintos
+       * Presiona la tecla "o" //aparecera un INSERT
+       * Escribe el mensaje y luego presiona la tecla "esc" // desaparecera el INSERT
+       * Escribe ":x" // :x significa salvar y salir
+    2) Manual Merge: Se han trabajado en el mismo archivo
+       * Aparecera COnflict asi que tu tienes que ir al código y borrarlo manualmente
+       * git commit -am "mensaje de commit"
+     * git merge origin/master // Para fusionar la rama master con la rama escondida origin/masster
+    ---------------
+
+    SUBIR UN PROYECTO DE LOCAL A GITHUB
+    -----------------------------------
+    1) git init // en la carpeta en donde quieres tenerlo en local
+    2) Crea un repositorio en github
+    3) Copiar el https por ejemplo https://github.com/irvindmoreno/Tutoriales.git
+    4) git remote add origin urlCopiadoEn2) // enlaza a tu proyecto local con el repositorio de github
+    5) git push origin master // sube la rama master al origin que es tu repositorio en github creado en 3
+    git fesh origin //descarga los cambios que tengo en remoto en la rama origin/master (la rama escondida)
+    -----------------------------------
+
+    SUBIR UN PROYECTO DE LOCAL A GITLAB ssh
+    ---------------------------------------
+    1) En local creas tu carpeta
+    2) En local tenemos que generar una llave para ello escribe en la consola ssh-keygen y te mostrara una ruta que es donde estara guardada el key, con fe dale a enter
+    3) Escribes una contrasña en mi caso escribire zktita
+    4) Te pedira que vuelvas a escribir la contraseña
+    5) Regresa al home (~) y escribe cd .ssh
+    6) Si das a ls veras 2 archivos un id_rsa y un id_rsa.bub
+    7) En consola escribe cat id_rsa.bub y copias lo que te bota (es tu llave publica) y lo pegas en el repositoio remono en donde te pide las keys
+    8) En tu carpeta local dale git init
+    9) git remote add origin urlSSH
+    10) git -remote -v // para ver con quien estamos vinvulados remotamente
+    11) git pull origin master // para bajar los archivos de remoto hace un git fecth y git merch al mismo tiempo
+    12) te pedira la contraseña econdida que pusimos anteriormente para el rsa(en el paso 3) en mi caso era "zktita"
+    13) descargarte una rama que no sea la master ejemplo: git pull origin ticket-truji-3
+    14) localizarte sobre la rama descargada con checkout
+    ---------------------------------------
+
+    
+    CONCEPTOS
+    ---------
+    Deployment -> Subir el proyecto al servidor para que sea visible al público
+    Shellscript -> un archivo con serio de comandos para no escribirlos todo de consola
+    
+    
+
+
+Si en github le damos a fork a un proyecto lo clonamos para nosotros
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
